@@ -1,13 +1,23 @@
 package com.pucuk.latihan_chapter_5.network
 
-import com.pucuk.latihan_chapter_5.model.ResponseDataFilmItem
-import com.pucuk.latihan_chapter_5.model.ResponseDataNewsItem
+import android.provider.ContactsContract.Data
+import com.pucuk.latihan_chapter_5.model.*
 import retrofit2.Call
-import retrofit2.http.GET
+import retrofit2.http.*
 
 interface RestfulApi {
     @GET("news")
     fun getAllNews(): Call<List<ResponseDataNewsItem>>
+
+    @POST("news")
+    fun postDataNews(@Body request: DataNews): Call<ResponseAddNews>
+
+    @PUT("news/{id}")
+    fun updateDataNews(
+        @Path("id") id: Int,
+        @Body request: DataNews
+    ) : Call<List<ResponseUpdateNews>>
+
 
     @GET("film")
     fun getAllFilm(): Call<List<ResponseDataFilmItem>>
