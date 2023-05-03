@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "366864883252",
+    "project_id": "binar-chapter5",
+    "storage_bucket": "binar-chapter5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366864883252:android:91e08d78c9a8d71cc1b461",
+        "android_client_info": {
+          "package_name": "com.pucuk.latihan_chapter_5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366864883252-sesk62cvmimhgbbvntrp4arhj7urv9d1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pucuk.latihan_chapter_5",
+            "certificate_hash": "ddbbf5b23df6e26f3ed937886bf3b8635a009672"
+          }
+        },
+        {
+          "client_id": "366864883252-l8q34cs3cd8phv2lkubkcvcl5hsrngvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ4CsuYlkbHWzd-ZoH36FmUvCXEYGiyNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "366864883252-l8q34cs3cd8phv2lkubkcvcl5hsrngvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

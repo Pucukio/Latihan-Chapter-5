@@ -1,5 +1,6 @@
 package com.pucuk.latihan_chapter_5
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,18 +22,27 @@ class UpdateNewsActivity : AppCompatActivity() {
             var author = binding.etUpdateAuthor.text.toString()
             var description = binding.etUpdateDescription.text.toString()
 
-            updateNews(id!!.toInt(), title, image, author, description)
+
+            // Periksa apakah ada data yang belum diisi sebelum memperbarui data
+            if (title.isBlank() || image.isBlank() || author.isBlank() || description.isBlank()) {
+                Toast.makeText(this, "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
+            } else {
+                updateNews(id!!.toInt(), title, image, author, description)
+                Toast.makeText(this, "Berita Berhasil di Update", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, NewsListActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 
-    fun updateNews(id: Int, title: String, image: String, author: String, description: String) {
-        var viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
+    private fun updateNews(id: Int, title: String, image: String, author: String, description: String) {
+        val viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
         viewModel.updateDataNews(id, title, image, author, description)
         viewModel.updateNews().observe(this) {
             if (it != null) {
-                Toast.makeText(this, "Data Berhasil di Update", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Berita Berhasil di Update", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 }
