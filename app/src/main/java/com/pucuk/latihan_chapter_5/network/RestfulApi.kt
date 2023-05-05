@@ -21,4 +21,9 @@ interface RestfulApi {
 
     @GET("film")
     fun getAllFilm(): Call<List<ResponseDataFilmItem>>
+
+    @DELETE("news/{id}")
+    fun deleteDataNews(
+        @Path("id") id: Int
+    ) : Call<ResponseDeleteNews>
 }

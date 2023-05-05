@@ -18,7 +18,7 @@ class NewsListActivity : AppCompatActivity() {
         showDataNews()
 
         binding.fabTambah.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, AddNewsActivity::class.java))
         }
     }
     override fun onResume() {

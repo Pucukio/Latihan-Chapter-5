@@ -13,6 +13,7 @@ class NewsViewModel: ViewModel() {
     val liveDataNews = MutableLiveData<List<ResponseDataNewsItem>>()
     private val postDataNews = MutableLiveData<ResponseAddNews>()
     private val updateDataNews = MutableLiveData<List<ResponseUpdateNews>>()
+    private val deleteDataNews = MutableLiveData<ResponseDeleteNews>()
 
 
     fun getDataNews(): MutableLiveData<List<ResponseDataNewsItem>> {
@@ -25,6 +26,10 @@ class NewsViewModel: ViewModel() {
 
     fun updateNews(): MutableLiveData<List<ResponseUpdateNews>> {
         return updateDataNews
+    }
+
+    fun deleteNews(): MutableLiveData<ResponseDeleteNews> {
+        return deleteDataNews
     }
 
     fun callApiNews() {
@@ -83,6 +88,25 @@ class NewsViewModel: ViewModel() {
 
                 override fun onFailure(call: Call<List<ResponseUpdateNews>>, t: Throwable) {
                     updateDataNews.postValue(null)
+                }
+            })
+    }
+    fun deleteDataNews(id: Int) {
+        RetrofitClient.instance.deleteDataNews(id)
+            .enqueue(object : Callback<ResponseDeleteNews> {
+                override fun onResponse(
+                    call: Call<ResponseDeleteNews>,
+                    response: Response<ResponseDeleteNews>
+                ) {
+                    if (response.isSuccessful) {
+                        deleteDataNews.postValue(response.body())
+                    } else {
+                        deleteDataNews.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseDeleteNews>, t: Throwable) {
+                    deleteDataNews.postValue(null)
                 }
             })
     }
